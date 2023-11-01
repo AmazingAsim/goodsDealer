@@ -4,7 +4,8 @@ let mongoose=require('mongoose');
 let schema=mongoose.Schema({
 name:{type:String,require:true},
 email:{type:String,require:true,unique:true},
-password:{type:String,required:true}
+password:{type:String,required:true},
+phone:{type:String,require:true}
 })
 
 let usermodel=mongoose.model('user',schema)

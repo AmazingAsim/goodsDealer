@@ -9,6 +9,20 @@ exports.findone = (id)=>{
     return dbcollection.findOne({_id:id})
 }
 
-exports.updateProduct = (product)=>{
+exports.findByCatagory = (cat)=>{
+    return dbcollection.find({catagory:cat});
+}
+
+exports.findByName = (name)=>{
+    return dbcollection.find({name: { $regex: '.*' + name + '.*' } });
+}
+
+
+
+exports.updateProduct = (id,product)=>{
     return dbcollection.updateOne({_id:id},product)
+}
+
+exports.findAll = ()=>{
+    return dbcollection.find()
 }
