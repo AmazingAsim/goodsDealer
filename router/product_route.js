@@ -25,7 +25,7 @@ route.get('/get_product/:id',productController.findProduct);
 
 route.post('/add_product',productController.addProduct);
 
-route.patch('/update_product/:id',productController.updateProduct);
+route.post('/update_product/:id',productController.updateProduct);
 
 route.post('/addimages/:id', upload.array('files', 5), async(req, res) => {
     // Access the array of uploaded files via req.files

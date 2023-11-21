@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Product</h1>
+    <div id="form">
+        
+    </div>
+    <script>
+       async function getdata(){
+        let id = location.search.substr(1)
+        let result =await fetch(`${location.origin}/products/get_product/${id}`);
+        result = await result.json();
+        console.log(result.data);
+        let product = result.data;
+        let box = document.getElementById('form');
+        box.innerHTML = `
+        <form method="post" action="${location.origin}/products/update_product/${id} ">
+             <input name="name" value="${product.name}" type="text" placeholder="name"> <br>
+             <input name="price" value="${product.price}" type="text" placeholder="price"> <br>
+             <input name="brand" value="${product.brand}" type="text" placeholder="brand"> <br>
+             <input name="catagory" value="${product.catagory}" type="text" placeholder="catagory"> <br>
+             <button type="submit">Submit</button>
+         </form>
+        `
+    }
+
+       getdata();
+    </script>
+</body>
+</html> 
